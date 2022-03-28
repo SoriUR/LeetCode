@@ -15,12 +15,13 @@
  */
 class Solution {
     func isSameTree(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
-        return p == q
-    }
-}
-
-extension TreeNode: Equatable { 
-    public static func ==(lhs: TreeNode, rhs: TreeNode) -> Bool { 
-        return lhs.val == rhs.val && lhs.left == rhs.left && lhs.right == rhs.right
+        guard let p = p, let q = q else { 
+            return p == nil && q == nil 
+        }
+        
+        guard p.val == q.val else { return false }
+        
+        guard isSameTree(p.left, q.left) else { return false }
+        return isSameTree(p.right, q.right)
     }
 }
