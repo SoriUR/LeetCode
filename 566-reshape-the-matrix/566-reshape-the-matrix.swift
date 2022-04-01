@@ -5,31 +5,21 @@ class Solution {
             return mat
         }
         
-        var answ = [[Int]]()
-        answ.reserveCapacity(r)
-        
+        var answ = Array(repeating: Array(repeating: 0, count: c), count: r)        
         var iteration = 0
         
-        let iCount = mat.count
-        for i in 0..<iCount { 
-            let jCount = mat[i].count
-            for j in 0..<jCount { 
+        for i in 0..<mat.count { 
+            for j in 0..<mat[i].count { 
                 
                 let i1 = iteration / c
                 let j1 = iteration % c
                 
-                if i1 == answ.count { 
-                    var col = [Int]()
-                    col.reserveCapacity(c)
-                    answ.append(col)
-                }
-                
-                answ[i1].append(mat[i][j])
+                answ[i1][j1] = mat[i][j]
                 
                 iteration += 1
             }
         }
         
-            return answ
+        return answ
     }
 }
