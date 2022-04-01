@@ -1,6 +1,10 @@
 class Solution {
     func matrixReshape(_ mat: [[Int]], _ r: Int, _ c: Int) -> [[Int]] {
         
+        guard mat.count * mat[0].count == r*c else {
+            return mat
+        }
+        
         var answ = [[Int]]()
         answ.reserveCapacity(r)
         
@@ -26,9 +30,6 @@ class Solution {
             }
         }
         
-        if iteration == (r * c) {
             return answ
-        }
-        return mat
     }
 }
